@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "Riza Fahmi <rizafahmi@gmail.com> (https://rizafahmi.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "2.6.1",
+    "express": "4.16.4"
+  }
 }
