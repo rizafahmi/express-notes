@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Halo Express</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Halo Express</h1>
-  <p><%= text %></p>
+  <h1>Notes</h1>
+  <% if ( notes ) {%>
+    <ul>
+      <% notes.forEach(function (note) { %>
+        <li><a href="#"><%= note.title %></a></li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <div>No notes yet...</div>
+  <% } %>
 </body>
 </html>

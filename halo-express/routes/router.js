@@ -1,8 +1,8 @@
 const { Router } = require('express');
+const rootController = require('../controllers/root.js');
+
 const router = new Router();
 
-router.get('*', (req, res) => {
-  res.render('index', { text: 'Halo' });
-});
+router.get('/', rootController.index);
 
 module.exports = router;
