@@ -14,9 +14,6 @@ app.set('view engine', 'ejs');
 app.use(router);
 
 // Setup helpers
-app.locals.noteAge = require('./util/helpers.js');
-// console.log(app.locals.noteAge(new Date()));
-// const { distanceInWords } = require('date-fns');
-
+app.locals.noteAge = require('./util/helpers.js').noteAge;
 
 module.exports = app;

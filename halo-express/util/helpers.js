@@ -1,5 +1,9 @@
 const { distanceInWords } = require('date-fns');
 
-module.exports = function(dateOfNote) {
+function noteAge(dateOfNote) {
   return distanceInWords(dateOfNote, new Date());
+}
+
+module.exports = {
+  noteAge: noteAge
 };
