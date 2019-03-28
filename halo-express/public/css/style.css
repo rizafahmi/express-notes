@@ -1,9 +1,7 @@
-body {
-  background: #FAAD63;
-  color: #613B1F;
+.note {
+  margin: 18px;
 }
 
-h1 {
-  font-size: 64px;
-  color: #fff;
+.date {
+  font-size: 12px;
 }
