@@ -7,14 +7,14 @@
     <% notes.forEach(function (note) { %>
       <div class="note">
         <div class="nes-container is-dark">
-          <h2><a href="/notes/<%= note._id %>/edit"><%= note.title %></a></h2>
+          <h2><a href="/notes/<%= note.id %>/edit"><%= note.title %></a></h2>
           <p><%= note.body %></p>
-          <span class="nes-text is-disabled date"><%= noteAge(note.createdAt) %></span>
+          <span class="nes-text is-disabled date"><%= noteAge(note.created_at) %></span>
           <div class="buttons">
-            <a class="nes-btn is-warning" href="/notes/<%= note._id%>/edit">
+            <a class="nes-btn is-warning" href="/notes/<%= note.id%>/edit">
               <i class="nes-icon heart is-small"></i> Edit
             </a> 
-            <form method="post" action="/notes/<%= note._id %>/remove?_method=DELETE">
+            <form method="post" action="/notes/<%= note.id %>/remove?_method=DELETE">
               <button class="remove nes-btn is-error" name="remove" onclick="return confirm('Are you sure?');">
               <i class="nes-icon close is-small"></i> Delete
             </button>

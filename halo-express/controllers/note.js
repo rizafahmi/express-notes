@@ -5,26 +5,24 @@ function create(req, res) {
 }
 
 function add(req, res) {
-  const note = req.body;
-  note.createdAt = new Date();
-  Note.add(note);
+  Note.add(req.body);
   res.redirect('/');
 }
 
-function edit(req, res) {
-  const note = Note.get(req.params.id);
+async function edit(req, res) {
+  const note = await Note.get(req.params.id);
   res.render('notes/edit', { note: note });
 }
 
-function update(req, res) {
+async function update(req, res) {
   const { id } = req.params;
-  Note.update(id, req.body);
+  await Note.update(id, req.body);
   res.redirect(`/`);
 }
 
-function remove(req, res) {
+async function remove(req, res) {
   const { id } = req.params;
-  Note.remove(id);
+  await Note.remove(id);
   res.redirect(`/`);
 }
 

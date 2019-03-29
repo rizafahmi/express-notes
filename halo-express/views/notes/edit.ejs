@@ -1,6 +1,6 @@
 <section class="nes-container with-title">
 <h2 class="title">Edit Note</h2>
-<form class="item" method="post" action="/notes/<%= note._id %>/edit?_method=put">
+<form class="item" method="post" action="/notes/<%= note.id %>/edit?_method=put">
   <div class="nes-field">
     <label for="title">Title</label>
     <input class="nes-input" type="text" name="title" value="<%= note.title %>" />

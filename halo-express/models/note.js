@@ -1,56 +1,40 @@
-let NOTES = [
-  {
-    _id: 1,
-    title: 'How to learn Node.js',
-    body: 'This is my notes on how to learn node.js',
-    createdAt: new Date('2019-02-22')
-  },
-  {
-    _id: 2,
-    title: 'Talk is cheap',
-    body: 'Talk is cheap. Show me code!',
-    createdAt: new Date('2018-12-25')
-  }
-];
+const config = require('../knexfile.js')[process.env.NODE_ENV || 'development'];
+const db = require('knex')(config);
 
-function getAll() {
-  return NOTES;
+async function getAll() {
+  try {
+    return db.select().from('note');
+  } catch (err) {
+    console.error(err.message);
+  }
 }
 
 function get(id) {
-  const notes = NOTES.filter(function(note) {
-    return note._id === parseInt(id);
-  });
-  return notes[0];
+  return db
+    .select()
+    .from('note')
+    .first();
 }
 
-function add(data) {
-  const newData = data;
-  newData['_id'] = NOTES.length + 1;
-  NOTES.push(newData);
-  return NOTES;
+async function add(data) {
+  try {
+    await db('note').insert(data);
+    return db.select().from('note');
+  } catch (err) {
+    console.error(err.message);
+  }
 }
 
 function update(id, data) {
-  // delete current note
-  const newNotes = NOTES.filter(function(note) {
-    return note._id !== parseInt(id);
-  });
-  NOTES = newNotes;
-
-  // add new note
-  const newNote = data;
-  newNote._id = parseInt(id);
-  newNote.createdAt = new Date();
-  NOTES.push(newNote);
-  return NOTES[id];
+  return db('note')
+    .where({ id })
+    .update(data);
 }
 
 function remove(id) {
-  NOTES = NOTES.filter(function(note) {
-    return note._id !== parseInt(id);
-  });
-  return NOTES;
+  return db('note')
+    .where({ id })
+    .del();
 }
 
 module.exports = {
