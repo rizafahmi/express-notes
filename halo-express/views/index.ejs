@@ -1,31 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Express Notes</title>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <body class="">
-    <div class="nes-container is-rounded">
-      <h1 class="">Express Notes</h1>
-      <div class="notes">
-        <% if ( notes && notes.length > 0 ) { %>
-          <% notes.forEach(function (note) { %>
-            <div class="note">
-              <div class="nes-container is-dark">
-                <h2><a href="#"><%= note.title %></a></h2>
-                <p><%= note.body %></p>
-                <span class="nes-text is-disabled date"><%= noteAge(note.createdAt) %></span>
-                <div class=""><a class="nes-btn is-primary" href="#"><i class="nes-icon heart is-small"></i> Edit</a> <a class="nes-btn is-error" href="#"><i class="nes-icon close is-small"></i> Delete</a></div>
-              </div>
-            </div>
-          <% }) %>
-        <% } else { %>
-          <div>No notes yet...<a href="#" class="nes-btn is-primary">Create one here</a></div>
-        <% } %>
+<div class="menu">
+  <a href="/notes/create" class="nes-btn is-primary">
+    <i class="nes-icon coin is-small"></i> New Note</a>
+</div>
+<div class="notes">
+  <% if ( notes && notes.length > 0 ) { %>
+    <% notes.forEach(function (note) { %>
+      <div class="note">
+        <div class="nes-container is-dark">
+          <h2><a href="#"><%= note.title %></a></h2>
+          <p><%= note.body %></p>
+          <span class="nes-text is-disabled date"><%= noteAge(note.createdAt) %></span>
+          <div class=""><a class="nes-btn is-primary" href="#"><i class="nes-icon heart is-small"></i> Edit</a> <a class="nes-btn is-error" href="#"><i class="nes-icon close is-small"></i> Delete</a></div>
+        </div>
       </div>
-    </div>
-  </body>
-</html>
+    <% }) %>
+  <% } else { %>
+    <div>No notes yet...<a href="#" class="nes-btn is-primary">Create one here</a></div>
+  <% } %>
+</div>
