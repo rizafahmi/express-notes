@@ -5,7 +5,9 @@ function create(req, res) {
 }
 
 function add(req, res) {
-  Note.add(req.body);
+  const note = req.body;
+  note.createdAt = new Date();
+  Note.add(note);
   res.redirect('/');
 }
 
@@ -20,9 +22,16 @@ function update(req, res) {
   res.redirect(`/`);
 }
 
+function remove(req, res) {
+  const { id } = req.params;
+  Note.remove(id);
+  res.redirect(`/`);
+}
+
 module.exports = {
   create: create,
   add: add,
   edit: edit,
-  update: update
+  update: update,
+  remove: remove
 };

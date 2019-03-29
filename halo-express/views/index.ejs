@@ -10,13 +10,15 @@
           <h2><a href="/notes/<%= note._id %>/edit"><%= note.title %></a></h2>
           <p><%= note.body %></p>
           <span class="nes-text is-disabled date"><%= noteAge(note.createdAt) %></span>
-          <div class="">
+          <div class="buttons">
             <a class="nes-btn is-warning" href="/notes/<%= note._id%>/edit">
               <i class="nes-icon heart is-small"></i> Edit
             </a> 
-            <a class="nes-btn is-error" href="#">
+            <form method="post" action="/notes/<%= note._id %>/remove?_method=DELETE">
+              <button class="remove nes-btn is-error" name="remove" onclick="return confirm('Are you sure?');">
               <i class="nes-icon close is-small"></i> Delete
-            </a>
+            </button>
+            </form>
           </div>
         </div>
       </div>

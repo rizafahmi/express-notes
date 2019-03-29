@@ -16,6 +16,7 @@
     "ejs": "2.6.1",
     "express": "4.16.4",
     "express-ejs-layouts": "2.5.0",
+    "massive": "5.7.7",
     "method-override": "3.0.0"
   }
 }

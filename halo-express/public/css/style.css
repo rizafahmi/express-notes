@@ -5,3 +5,7 @@
 .date {
   font-size: 12px;
 }
+
+.buttons {
+  display: inline-flex;
+}

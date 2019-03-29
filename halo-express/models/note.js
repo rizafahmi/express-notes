@@ -26,7 +26,7 @@ function get(id) {
 
 function add(data) {
   const newData = data;
-  newData['_id'] = NOTES.length - 1;
+  newData['_id'] = NOTES.length + 1;
   NOTES.push(newData);
   return NOTES;
 }
@@ -46,9 +46,17 @@ function update(id, data) {
   return NOTES[id];
 }
 
+function remove(id) {
+  NOTES = NOTES.filter(function(note) {
+    return note._id !== parseInt(id);
+  });
+  return NOTES;
+}
+
 module.exports = {
   getAll: getAll,
   get: get,
   add: add,
-  update: update
+  update: update,
+  remove: remove
 };
