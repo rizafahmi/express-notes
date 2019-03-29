@@ -9,7 +9,20 @@ function add(req, res) {
   res.redirect('/');
 }
 
+function edit(req, res) {
+  const note = Note.get(req.params.id);
+  res.render('notes/edit', { note: note });
+}
+
+function update(req, res) {
+  const { id } = req.params;
+  Note.update(id, req.body);
+  res.redirect(`/`);
+}
+
 module.exports = {
   create: create,
-  add: add
+  add: add,
+  edit: edit,
+  update: update
 };
