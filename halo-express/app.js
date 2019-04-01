@@ -19,15 +19,7 @@ app.set('view engine', 'ejs');
 app.use(layouts);
 
 // Middlewares
-app.use((request, response, next) => {
-  console.log('Satu');
-  next();
-});
-
-app.use((request, response, next) => {
-  console.log('Dua');
-  next();
-});
+app.use(require('./middlewares/logger.js'));
 
 // Setup Routes
 app.use(router);
