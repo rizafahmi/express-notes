@@ -2,6 +2,7 @@ const express = require('express');
 const layouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const logger = require('morgan');
 
 const router = require('./routes/router.js');
 
@@ -19,7 +20,7 @@ app.set('view engine', 'ejs');
 app.use(layouts);
 
 // Middlewares
-app.use(require('./middlewares/logger.js'));
+app.use(logger('dev'));
 
 // Setup Routes
 app.use(router);
