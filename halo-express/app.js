@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const logger = require('morgan');
 
 const router = require('./routes/router.js');
+const errorRouter = require('./routes/error.js');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(logger('dev'));
 
 // Setup Routes
 app.use(router);
+app.use(errorRouter);
 
 // Setup helpers
 app.locals.noteAge = require('./util/helpers.js').noteAge;
