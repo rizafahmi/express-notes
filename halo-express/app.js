@@ -18,6 +18,17 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(layouts);
 
+// Middlewares
+app.use((request, response, next) => {
+  console.log('Satu');
+  next();
+});
+
+app.use((request, response, next) => {
+  console.log('Dua');
+  next();
+});
+
 // Setup Routes
 app.use(router);
 
