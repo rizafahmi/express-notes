@@ -16,10 +16,9 @@ function get(id) {
     .first();
 }
 
-async function add(data) {
+function add(data) {
   try {
-    await db('note').insert(data);
-    return db.select().from('note');
+    return db('note').insert(data);
   } catch (err) {
     console.error(err.message);
   }

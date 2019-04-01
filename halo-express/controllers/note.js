@@ -4,8 +4,8 @@ function create(req, res) {
   res.render('notes/create');
 }
 
-function add(req, res) {
-  Note.add(req.body);
+async function add(req, res) {
+  await Note.add(req.body);
   res.redirect('/');
 }
 
