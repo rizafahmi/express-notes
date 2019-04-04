@@ -8,7 +8,7 @@ async function add(data) {
     const saltRounds = 10;
     const hashPassword = await bcrypt.hash(password, saltRounds);
 
-    return db('user').insert({ email: email, password: hashPassword });
+    return db('user').insert({ email: email, password: hashPassword }, 'id');
   } catch (err) {
     console.error(err.message);
   }
@@ -29,7 +29,9 @@ function get(email) {
 async function login(email, password) {
   const user = await get(email);
   if (user) {
-    return await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, user.password);
+    if (match) return user;
+    else return false;
   } else {
     return false;
   }

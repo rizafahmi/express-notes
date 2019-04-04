@@ -7,8 +7,11 @@ const logger = require('morgan');
 const router = require('./routes/router.js');
 const userRouter = require('./routes/user.js');
 const errorRouter = require('./routes/error.js');
+const { cookieSecret, sessionSecret } = require('./config/credentials.js');
 
 const app = express();
+
+const ISPROD = process.env.NODE_ENV === 'production';
 
 // Form Stuff
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +26,20 @@ app.use(layouts);
 
 // Middlewares
 app.use(logger('dev'));
+app.use(require('cookie-parser')(cookieSecret));
+app.use(
+  require('express-session')({
+    name: 'sid',
+    resave: false,
+    saveUninitialized: false,
+    secret: sessionSecret,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 2,
+      sameSite: true,
+      secure: ISPROD
+    }
+  })
+);
 
 // Setup Routes
 app.use(router);

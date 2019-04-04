@@ -17,25 +17,38 @@ async function add(req, res) {
     password
   };
   // Add to user table
-  await User.add(user);
+  const newUser = await User.add(user);
   // Loged in user
+  req.session.userId = newUser[0];
   res.redirect('/');
 }
 
 async function process_login(req, res) {
-  const match = await User.login(req.body.email, req.body.password);
-  if (match === true) {
-    console.log('Login success');
-    res.redirect('/');
-  } else {
+  const user = await User.login(req.body.email, req.body.password);
+  if (user === false) {
     console.log('Login failed');
+    res.redirect('/users/login');
+  } else {
+    console.log('Login success');
+    req.session.userId = user.id;
     res.redirect('/');
   }
+}
+
+function logout(req, res) {
+  req.session.destroy((err) => {
+    if (err) {
+      res.redirect('/');
+    }
+    res.clearCookie('sid');
+    res.redirect('/users/login');
+  });
 }
 
 module.exports = {
   register: register,
   add: add,
   login: login,
-  process_login: process_login
+  process_login: process_login,
+  logout: logout
 };

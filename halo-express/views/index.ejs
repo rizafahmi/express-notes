@@ -1,10 +1,15 @@
 <div class="menu">
   <a href="/notes/create" class="nes-btn is-primary">
     <i class="nes-icon coin is-small"></i> New Note</a>
+  <% if (isLogin !== true) { %>
   <a href="/users/register" class="nes-btn is-warning">
     <i class="nes-icon like is-small"></i> Register</a>
   <a href="/users/login" class="nes-btn is-warning">
     <i class="nes-icon like is-small"></i> Login</a>
+<% } else { %>
+  <a href="/users/logout" class="nes-btn is-error">
+    <i class="nes-icon close is-small"></i> Logout</a>
+<% } %>
 </div>
 <div class="notes">
   <% if ( notes && notes.length > 0 ) { %>
