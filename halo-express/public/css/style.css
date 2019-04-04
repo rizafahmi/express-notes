@@ -9,3 +9,7 @@
 .buttons {
   display: inline-flex;
 }
+
+.menu {
+  margin-bottom: 18px;
+}

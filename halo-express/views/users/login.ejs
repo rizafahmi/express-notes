@@ -1,0 +1,20 @@
+<div class="menu">
+  <a href="/users/register" class="nes-btn is-warning">
+    <i class="nes-icon like is-small"></i> Register</a>
+  <!-- <a href="/users/logout" class="nes-btn is-warning"> -->
+  <!--   <i class="nes-icon like is-small"></i> Logout</a> -->
+</div>
+<section class="nes-container with-title">
+  <h2 class="title">Login</h2>
+  <form action="/users/login" method="POST">
+    <div class="nes-field">
+      <label for="email">Email</label>
+      <input class="nes-input" type="email" name="email" placeholder="me@email.com" required />
+    </div>
+    <div class="nes-field">
+      <label for="password">Password</label>
+      <input class="nes-input" type="password" name="password" placeholder="super secret password" required />
+    </div>
+    <button type="submit" class="nes-btn is-success">Login</button>
+  </form>
+</section>

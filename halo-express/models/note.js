@@ -13,6 +13,7 @@ function get(id) {
   return db
     .select()
     .from('note')
+    .where({ id })
     .first();
 }
 

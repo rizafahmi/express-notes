@@ -4,6 +4,7 @@ const noteController = require('../controllers/note.js');
 
 const router = new Router();
 
+// TODO: Refactor this, moves notes
 router.get('/', rootController.index);
 router.get('/notes/create', noteController.create);
 router.post('/notes', noteController.add);
