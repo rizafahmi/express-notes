@@ -7,7 +7,9 @@ const logger = require('morgan');
 const router = require('./routes/router.js');
 const userRouter = require('./routes/user.js');
 const errorRouter = require('./routes/error.js');
-const { cookieSecret, sessionSecret } = require('./config/credentials.js');
+
+const COOKIE_SECRET = 'rahasia' || process.env.COOKIE_SECRET;
+const SESSION_SECRET = 'r4h4514' || process.env.SESSION_SECRET;
 
 const app = express();
 
@@ -26,13 +28,13 @@ app.use(layouts);
 
 // Middlewares
 app.use(logger('dev'));
-app.use(require('cookie-parser')(cookieSecret));
+app.use(require('cookie-parser')(COOKIE_SECRET));
 app.use(
   require('express-session')({
     name: 'sid',
     resave: false,
     saveUninitialized: false,
-    secret: sessionSecret,
+    secret: SESSION_SECRET,
     cookie: {
       maxAge: 1000 * 60 * 60 * 2,
       sameSite: true,
