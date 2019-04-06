@@ -1,10 +1,10 @@
 function isLogin(req, res, next) {
+  console.log(req.session);
   if (req.session.userId) {
     return true;
   } else {
     return false;
   }
-  next();
 }
 
 function checkLogin(req, res, next) {

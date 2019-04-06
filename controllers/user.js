@@ -26,10 +26,8 @@ async function add(req, res) {
 async function process_login(req, res) {
   const user = await User.login(req.body.email, req.body.password);
   if (user === false) {
-    console.log('Login failed');
     res.redirect('/users/login');
   } else {
-    console.log('Login success');
     req.session.userId = user.id;
     res.redirect('/');
   }

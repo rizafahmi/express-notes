@@ -40,8 +40,8 @@ module.exports = {
     connection: {
       host: '127.0.0.1',
       database: 'express_notes',
-      user: 'username',
-      password: 'password'
+      user: 'postgres',
+      password: ''
     },
     pool: {
       min: 2,

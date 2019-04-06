@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
+    "prestart": "knex migrate:latest",
     "start": "node server.js"
   },
   "keywords": [],
