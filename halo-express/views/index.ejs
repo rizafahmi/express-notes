@@ -11,6 +11,11 @@
     <i class="nes-icon close is-small"></i> Logout</a>
 <% } %>
 </div>
+<% if (flash) { %>
+  <div class="nes-container is-rounded">
+    <p class="nes-text is-success"><%= flash.text %></p>
+  </div>
+<% } %>
 <div class="notes">
   <% if ( notes && notes.length > 0 ) { %>
     <% notes.forEach(function (note) { %>

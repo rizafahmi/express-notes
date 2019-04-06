@@ -6,6 +6,9 @@ function create(req, res) {
 
 async function add(req, res) {
   await Note.add(req.body);
+  req.session.flash = {
+    text: 'Note created.'
+  };
   res.redirect('/');
 }
 

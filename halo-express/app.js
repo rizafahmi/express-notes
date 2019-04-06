@@ -40,6 +40,7 @@ app.use(
     }
   })
 );
+app.use(require('./middlewares/flash.js'));
 
 // Setup Routes
 app.use(router);
