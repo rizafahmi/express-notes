@@ -1,5 +1,4 @@
 function isLogin(req, res, next) {
-  console.log(req.session);
   if (req.session.userId) {
     return true;
   } else {
