@@ -12,7 +12,7 @@
   "author": "Riza Fahmi <rizafahmi@gmail.com> (https://rizafahmi.com)",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "3.0.5",
+    "bcrypt": "5.0.0",
     "body-parser": "1.18.3",
     "cookie-parser": "1.4.4",
     "date-fns": "1.30.1",
