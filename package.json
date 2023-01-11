@@ -20,7 +20,7 @@
     "express": "4.16.4",
     "express-ejs-layouts": "2.5.0",
     "express-session": "1.15.6",
-    "knex": "0.16.3",
+    "knex": "2.4.0",
     "method-override": "3.0.0",
     "morgan": "1.9.1",
     "pg": "7.9.0"
